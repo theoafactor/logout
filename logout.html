@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Applications</title>
+</head>
+<style>
+	.wrapper{
+		width: 100%;
+
+	}
+
+	nav {
+		width: 90%;
+		margin-right: auto;
+		margin-left: auto;
+	}
+	nav ul{
+		display: flex;
+		justify-content: center;
+	}
+
+	nav ul li{
+		margin-right: 10px;
+		margin-left: 10px;
+		list-style-type: none;
+	}
+
+	a{
+		text-decoration: none;
+		color: inherit;
+		transition-property: all;
+		transition-duration: 0.5s;
+	}
+
+	a:visited{
+		color: inherit;
+	}
+
+	a:hover{
+		box-shadow: 1px 1px 1px .1px grey,
+					-1px -1px 1px .1px grey;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+
+	.btn {
+		width: 300px;
+		height: 30px;
+		padding: .5em;
+
+	}
+
+	.btn-warning{
+		background: orange;
+	}
+
+	/**
+	 * Modals
+	 */
+	.simple-modal{
+		display: none;
+		background: grey;
+		width: 40%;
+		color: white;
+		position: absolute;
+		left: 0;
+		right: 0;
+		margin-right: auto;
+		margin-left: auto;
+		padding: 10px;
+		box-sizing: border-box;
+	}
+
+
+</style>
+
+
+
+<body>
+	<div class='wrapper'>
+
+		<nav>
+			<ul>
+				<li>Home</li>
+				<li>About Us </li>
+				<li><a href='#' class='btn btn-warning' id='logoutButton' data-dev='modal' data-target='#logoutModal'>Logout</a> </li>
+			</ul>
+		</nav>
+		
+	</div>
+
+
+<!-- Simple Logout Modal -->
+<div class='simple-modal' id='logoutModal'>
+		<div class='modalHead'>
+			<h4>Do You Want Really Want to Logout?</h4>
+		</div>
+
+		<div class='modalBody'>
+
+
+			
+		</div>
+</div>
+<!-- End of Simple Logout Modal -->
+
+
+
+<script type='text/javascript'>
+	
+	const logoutButton = document.querySelector("#logoutButton");
+
+	logoutButton.onclick = function(){
+
+		const modalId = this.getAttribute('data-target');
+
+			//show logout confirmation..
+			//check if a data
+			const attr = this.getAttribute('data-dev');
+			if(attr != null || attr != undefined){
+					if(attr == 'modal'){
+						//fire up the modal..
+						const allModals = document.querySelectorAll("div.simple-modal");
+						for(let i = 0; i < allModals.length; i++){
+							//console.log(modalId);
+							let thisModalId = allModals[i].getAttribute('id');
+							if("#"+thisModalId == modalId){
+								document.getElementById(thisModalId).style.display = 'block';
+							}
+
+							
+						}
+						
+					}
+
+			}
+
+			
+
+	};
+
+</script>
+</body>
+</html>
